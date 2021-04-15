@@ -93,7 +93,10 @@ class Airplane {
       let gallonsUsed = distance/this.milesPerGallon;
       this.odometer += distance;
       this.tank -= gallonsUsed;
-      if (this.tank === 0){
+      if (this.tank < 0){
+        let noFuel = (this.tank * (-1)) * this.milesPerGallon;    // I observed Mitch's code for this one. I don't understand what this means exactly an need clarification.
+        this.tank = 0;
+        this.odometer -= noFuel;
         return `I ran out of fuel at ${this.odometer} miles!`
       }
       return `${this.odometer} / ${this.tank}`;
